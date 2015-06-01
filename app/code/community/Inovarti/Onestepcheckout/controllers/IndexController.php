@@ -31,41 +31,44 @@ class Inovarti_Onestepcheckout_IndexController extends Mage_Checkout_Controller_
     }
 
     public function indexAction() {
-        if (Mage::getStoreConfig('onestepcheckout/general/is_authenticate_before')) {
-            if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
-                $url = Mage::getUrl('onestepcheckout/index/', array('_secure' => true));
 
-                $this->_redirect('customer/account/login',array(Mage_Customer_Helper_Data::REFERER_QUERY_PARAM_NAME => Mage::helper('core')->urlEncode($url)));
-            }
-        }
+        echo '123456';
 
-        if (!Mage::helper('onestepcheckout/config')->isEnabled()) {
-            Mage::getSingleton('checkout/session')->addError($this->__('The onestep checkout is disabled.'));
-            $this->_redirect('checkout/cart');
-            return;
-        }
-        $quote = $this->getOnepage()->getQuote();
-        if (!$quote->hasItems() || $quote->getHasError()) {
-            $this->_redirect('checkout/cart');
-            return;
-        }
-        if (!$quote->validateMinimumAmount()) {
-            $error = Mage::getStoreConfig('sales/minimum_order/error_message');
-            Mage::getSingleton('checkout/session')->addError($error);
-            $this->_redirect('checkout/cart');
-            return;
-        }
-        Mage::getSingleton('checkout/session')->setCartWasUpdated(false);
-        $this->getOnepage()->initCheckout();
-        Mage::helper('onestepcheckout/address')->initAddress();
-        Mage::helper('onestepcheckout/shipping')->initShippingMethod();
-        Mage::helper('onestepcheckout/payment')->initPaymentMethod();
-        $this->getOnepage()->getQuote()->setTotalsCollectedFlag(false);
-        $this->getOnepage()->getQuote()->collectTotals()->save();
-        $this->loadLayout();
-        $this->_initLayoutMessages('customer/session');
-        $this->getLayout()->getBlock('head')->setTitle($this->__('Checkout'));
-        $this->renderLayout();
+//        if (Mage::getStoreConfig('onestepcheckout/general/is_authenticate_before')) {
+//            if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
+//                $url = Mage::getUrl('onestepcheckout/index/', array('_secure' => true));
+//
+//                $this->_redirect('customer/account/login',array(Mage_Customer_Helper_Data::REFERER_QUERY_PARAM_NAME => Mage::helper('core')->urlEncode($url)));
+//            }
+//        }
+//
+//        if (!Mage::helper('onestepcheckout/config')->isEnabled()) {
+//            Mage::getSingleton('checkout/session')->addError($this->__('The onestep checkout is disabled.'));
+//            $this->_redirect('checkout/cart');
+//            return;
+//        }
+//        $quote = $this->getOnepage()->getQuote();
+//        if (!$quote->hasItems() || $quote->getHasError()) {
+//            $this->_redirect('checkout/cart');
+//            return;
+//        }
+//        if (!$quote->validateMinimumAmount()) {
+//            $error = Mage::getStoreConfig('sales/minimum_order/error_message');
+//            Mage::getSingleton('checkout/session')->addError($error);
+//            $this->_redirect('checkout/cart');
+//            return;
+//        }
+//        Mage::getSingleton('checkout/session')->setCartWasUpdated(false);
+//        $this->getOnepage()->initCheckout();
+//        Mage::helper('onestepcheckout/address')->initAddress();
+//        Mage::helper('onestepcheckout/shipping')->initShippingMethod();
+//        Mage::helper('onestepcheckout/payment')->initPaymentMethod();
+//        $this->getOnepage()->getQuote()->setTotalsCollectedFlag(false);
+//        $this->getOnepage()->getQuote()->collectTotals()->save();
+//        $this->loadLayout();
+//        $this->_initLayoutMessages('customer/session');
+//        $this->getLayout()->getBlock('head')->setTitle($this->__('Checkout'));
+//        $this->renderLayout();
     }
 
     public function getOnepage() {
