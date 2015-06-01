@@ -61,9 +61,9 @@ class Inovarti_Onestepcheckout_IndexController extends Mage_Checkout_Controller_
         Mage::getSingleton('checkout/session')->setCartWasUpdated(false);
         $this->getOnepage()->initCheckout();
 
-        echo '123456';
+        echo $this->getOnepage()->getQuote();
 
-        echo Mage::helper('onestepcheckout/address')->initAddress();
+//        Mage::helper('onestepcheckout/address')->initAddress();
 //        Mage::helper('onestepcheckout/shipping')->initShippingMethod();
 //        Mage::helper('onestepcheckout/payment')->initPaymentMethod();
 //        $this->getOnepage()->getQuote()->setTotalsCollectedFlag(false);
