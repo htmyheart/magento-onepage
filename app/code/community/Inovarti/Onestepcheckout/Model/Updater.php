@@ -76,6 +76,7 @@ class Inovarti_Onestepcheckout_Model_Updater {
         }
 
         echo $blocks;
+        return ;
 
         return $blocks;
     }
