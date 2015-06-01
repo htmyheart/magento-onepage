@@ -74,6 +74,9 @@ class Inovarti_Onestepcheckout_Model_Updater {
                 $blocks[$key] = $block->toHtml();
             }
         }
+
+        echo $blocks;
+
         return $blocks;
     }
 

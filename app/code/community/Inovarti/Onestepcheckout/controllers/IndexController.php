@@ -31,9 +31,6 @@ class Inovarti_Onestepcheckout_IndexController extends Mage_Checkout_Controller_
     }
 
     public function indexAction() {
-
-
-
         if (Mage::getStoreConfig('onestepcheckout/general/is_authenticate_before')) {
             if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
                 $url = Mage::getUrl('onestepcheckout/index/', array('_secure' => true));
@@ -60,7 +57,6 @@ class Inovarti_Onestepcheckout_IndexController extends Mage_Checkout_Controller_
         }
         Mage::getSingleton('checkout/session')->setCartWasUpdated(false);
         $this->getOnepage()->initCheckout();
-        
         Mage::helper('onestepcheckout/address')->initAddress();
         Mage::helper('onestepcheckout/shipping')->initShippingMethod();
         Mage::helper('onestepcheckout/payment')->initPaymentMethod();
