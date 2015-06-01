@@ -151,7 +151,7 @@ class Inovarti_Onestepcheckout_AjaxController extends Mage_Checkout_Controller_A
                 $data['email'] = trim($data['email']);
             }
             $saveBillingResult = Mage::helper('onestepcheckout/address')->saveBilling($data, $customerAddressId);
-            echo jsonEncode($saveBillingResult);
+            echo json_encode($saveBillingResult);
 
 //            $usingCase = isset($data['use_for_shipping']) ? (int) $data['use_for_shipping'] : 0;
 //            if ($usingCase === 0) {
